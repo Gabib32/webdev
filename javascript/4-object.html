@@ -6,14 +6,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
 
 		<script type="text/javascript">
+		// Enumerating the properties of an object happens in an arbitrary order,
+		// the grading server handles this appropriately.
 			var objectHandle = {};
 
 			var functionInsert = function(strKey, strValue) {
 				// insert the property with strKey and strValue into objectHandle
+				return objectHandle[strKey] = strValue;
 			};
 
 			var functionDelete = function(strKey) {
 				// remove the property with strKey from objectHandle
+				return delete objectHandle[strKey];
 			};
 
 			var functionLookup = function(strKey) {
@@ -21,14 +25,16 @@
 
 				// objectHandle might not contain strKey
 				// should this be the case, return an empty string
-
-				return '';
+				output = objectHandle[strKey]
+				if (output === undefined) {
+					return "";
+				}
+				return output;
 			};
 
 			var functionKeys = function() {
 				// return a string of the concatenated strKey in objectHandle, separated by commas
-
-				return '';
+				return Object.keys(objectHandle).join(', ');
 			};
 
 			functionInsert('hello', 'world');

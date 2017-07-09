@@ -10,6 +10,7 @@
 
 			var functionInsert = function(intNumber) {
 				// insert intNumber into intArray
+				return intArray.push(intNumber);
 			};
 
 			var functionDelete = function(intNumber) {
@@ -17,6 +18,15 @@
 
 				// intArray might not contain intNumber
 				// the function does not have an effect in this case
+
+				intIndex = intArray.indexOf(intNumber);
+				if (intIndex === -1) {
+					return;
+				} else {
+					test = intArray.splice(intIndex, 1);
+					console.log(test)
+				}
+
 			};
 
 			var functionLookup = function(intIndex) {
@@ -25,13 +35,22 @@
 				// intIndex might be out of bounds
 				// should this be the case, return null
 
-				return 0;
+				ret = intArray[intIndex];
+
+				if (ret === undefined) {
+					return null;
+				} else {
+					intArray.splice(intIndex, 1);
+					return ret;
+
+				}
+
 			};
 
 			var functionValues = function() {
 				// return a string of the concatenated intNumber in intArray, separated by commas
 
-				return '';
+				return intArray.join(', ');
 			};
 
 			functionInsert(1);
@@ -48,6 +67,8 @@
 			console.log(functionValues()); // expected: '3, 2'
 			functionDelete(-1);
 			console.log(functionLookup(-1)); // expected: null
+			console.log(functionDelete(-1));
+
 		</script>
 	</head>
 	<body>
