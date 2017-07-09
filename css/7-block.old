@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+
+		<style type="text/css">
+			.flex {
+				width: 175px;
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.container {
+				/*display: flex;*/
+				/*justify-content: flex-start;*/
+			}
+
+			.header {
+				padding:10px;
+				margin-bottom: 2px;
+				background-color: #000000;
+				color: #FFFFFF;
+
+			}
+
+			.content {
+				padding:10px;
+				border: 1px solid #000000;
+			}
+
+			.content > ul {
+				margin:0px 0px 0px -20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="flex">
+			<div class="container">
+				<div class="header">
+					first
+				</div>
+				<div class="content">
+					<ul>
+						<li>first</li>
+						<li>second</li>
+						<li>third</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="header">
+					second
+				</div>
+				<div class="content">
+					<ul>
+						<li>first</li>
+						<li>second</li>
+						<li>third</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
