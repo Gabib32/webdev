@@ -11,9 +11,13 @@
 		<input id="copy" type="button" value="copy">
 		<br>
 		<div id="output">output</div>
-		
+
 		<script type="text/javascript">
 			// attach an onclick listener to document.getElementById('copy') that copies the content from document.getElementById('input') to document.getElementById('output')
+			document.getElementById('copy').onclick = function() {
+				var input = document.getElementById("input").value;
+				var output = document.getElementById("output").innerHTML = input;
+			};
 		</script>
 	</body>
 </html>
