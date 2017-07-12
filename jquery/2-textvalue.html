@@ -17,11 +17,36 @@
 			var functionGet = function(strSelector) {
 				// determine whether the content of jQuery(strSelector) should be retrieved by using .val() or .text() and return this content
 
-				return '';
+				// console.log(strSelector);
+				// if ($(strSelector).is($("input:button"))){
+				// 	console.log($(strSelector).val());
+				// } else {
+				// 	console.log($(strSelector).text());
+				// }
+				// console.log($(strSelector).val());
+
+				// if !(var ($(strSelector).val())
+				ret = ($(strSelector).val());
+				if (!ret) {
+					ret = ($(strSelector).text());
+				};
+				return ret;
 			};
 
 			var functionSet = function(strSelector, strContent) {
 				// determine whether the content of jQuery(strSelector) should be set by using .val() or .text() and set it to strContent
+				if (($(strSelector).is($("input:button"))) || ($(strSelector).is($("input:text")))) {
+					($(strSelector).val(strContent));
+				} else {
+					($(strSelector).text(strContent));
+				};
+
+				// $(strSelector).val(strContent);
+				// console.log($(strSelector).val(strContent));
+				// console.log($(strSelector.length))
+				// if ($(strSelector).length === 0) {
+				// 	 cont = ($(strSelector).text(strContent));
+				// };
 			};
 
 			console.log(functionGet('#first')); // expected: 'first'

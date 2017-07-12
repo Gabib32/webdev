@@ -56,6 +56,65 @@
 
 		<script type="text/javascript">
 			// place the javascript code that selects the cells and applies the appropriate colors here
+			var red 		= '#FF0000';
+			var green 	= '#00FF00';
+			var blue 		= '#0000FF';
+			var yellow 	= '#FFFF00';
+			var cyan		= '#00FFFF';
+			var black		=	'#000000';
+			var magenta = '#FF00FF';
+
+			// try eq
+			jQuery('tr td.try_eq').eq(0)
+			.css({
+				'color' : red
+			});
+
+			jQuery('tr td.try_eq').eq(1)
+			.css({
+				'color' : green
+			});
+
+			jQuery('tr td.try_eq').eq(2)
+			.css({
+				'color' : blue
+			});
+
+			jQuery('tr td.try_eq').eq(3)
+			.css({
+				'color' : yellow
+			});
+
+			// try last child
+			jQuery('tr td.try_last_child:last-child')
+			.css({
+				'color' : magenta
+			});
+
+			// try nth child
+			jQuery('tr td.try_nth_child:nth-child(2n-1)')
+			.css({
+				'color' : cyan
+			});
+
+			// try children
+			jQuery('#try_children')
+			.css({
+				'color' : red
+			});
+
+			// try siblings
+			jQuery('#try_siblings').siblings()
+			.css({
+				'color' : green
+			});
+
+			// try previous
+			jQuery('#try_prev').prev()
+			.css({
+				'color' : blue
+			});
+
 		</script>
 	</body>
 </html>
