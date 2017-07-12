@@ -10,8 +10,18 @@
 		<script type="text/javascript">
 			var functionPrint = function(intEpoch) {
 				// given intEpoch (an epoch time), return a string that represents the given date in the format expected by the given examples
+				var output = "";
+				var end = moment(intEpoch).format('YYYY');
+				var now = moment().format('YYYY');
+				var diff = (now - end);
+				if (diff > 0 ) {
+						output = diff + " years ago";
+				} else {
+					diff = diff * - 1;
+					output = "in " + diff + " years";
+				}
 
-				return '';
+				return moment(intEpoch).format('dddd [the] Do [of] MMMM [in] YYYY - ') + output;
 			};
 
 			console.log(functionPrint(152129040472)); // expected: 'Sunday the 27th of October in 1974 - 42 years ago' (assuming pacific standard time)

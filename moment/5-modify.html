@@ -10,8 +10,10 @@
 		<script type="text/javascript">
 			var functionModify = function(strDate) {
 				// given strDate, return the epoch time of this date string with the minutes, the seconds and the milliseconds set to zero
+				var ep = moment(strDate, 'Do MMMM YYYY - HH:mm:ss.SSS');
+				ep.set({minute:0, second:0, millisecond:0});
 
-				return moment(strDate, 'Do MMMM YYYY - HH:mm:ss.SSS').valueOf();
+				return ep.valueOf();
 			};
 
 			console.log(functionModify('29th August 2028 - 20:18:44.620')); // expected: 1851217200000, which is "29th August 2028 - 20:00:00.000" (assuming pacific standard time)
