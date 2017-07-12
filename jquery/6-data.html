@@ -12,17 +12,42 @@
 
 		<script type="text/javascript">
 			var functionCreate = function(intWidth, intHeight) {
-				// create a table similar to the previous exercie, but with 'click me' as the text for each cell / td element
+				// create a table similar to the previous exercise, but with 'click me' as the text for each cell / td element
 				// when a cell / td element is being clicked, its text should be changed to 'y.x' (see example below)
 				// you have to attach a click listener to each cell / td element and i recommend to make use of the jquery data function
 
-				return jQuery('<table></table>');
+				// start string of table content
+				var table = $('<table></table>').attr("border", "1");
+
+				// create table rows
+				for (i = 1; i <= intHeight; i++) {
+					var tr = $('<tr></tr>');
+					// create columns
+					for (j = 1; j <= intWidth; j++) {
+						console.log(i, j);
+						// var td = $('<td></td>')
+						$(tr).append($('<td></td>')
+							.text('click me')
+							.data("txt", i + '.' + j)
+							.on('click', function() {
+								$(this).text($(this).data('txt'));
+							})
+						)
+						// tr.append(td);
+					}
+					table.append(tr);
+				}
+
+				return jQuery(table);
 			};
+			// jQuery('table')
+			// 	.attr("border", "1");
+
 
 			jQuery('#output')
 				.append(functionCreate(3, 2))
 			;
-			
+
 			// expected table for functionCreate(2, 1):
 			//   <table border="1">
 			//     <tr>
@@ -30,7 +55,7 @@
 			//       <td>click me</td> // should change to '1.2' if clicked
 			//     </tr>
 			//   </table>
-			
+
 			// expected table for functionCreate(3, 2):
 			//   <table border="1">
 			//     <tr>

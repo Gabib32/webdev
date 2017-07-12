@@ -16,13 +16,27 @@
 				// remember that you were already asked to create a table in the javascript section, but here you are asked to return a jquery object that represents a table
 				// to do this, you will have create jquery elements that represent the tr / td elements and append them systematically to a jquery table element
 
-				return jQuery('<table></table>');
+				// start string of table content
+				var table = $('<table></table>').attr("border", "1");
+
+				// create table rows
+				for (i = 1; i <= intHeight; i++) {
+					var tr = $('<tr></tr>');
+					// create columns
+					for (j = 1; j <= intWidth; j++) {
+						var td = $('<td></td>').text(i + '.' + j);
+						tr.append(td);
+					}
+					table.append(tr);
+				}
+
+				return jQuery(table);
 			};
 
 			jQuery('#output')
 				.append(functionCreate(3, 2))
 			;
-			
+
 			// expected table for functionCreate(2, 1):
 			//   <table border="1">
 			//     <tr>
@@ -30,7 +44,7 @@
 			//       <td>1.2</td>
 			//     </tr>
 			//   </table>
-			
+
 			// expected table for functionCreate(3, 2):
 			//   <table border="1">
 			//     <tr>
