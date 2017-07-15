@@ -17,8 +17,56 @@
 		</style>
 	</head>
 	<body>
-		<div class="container">
-			<!-- use col-sm-2 as well as col-sm-8 in the exercises, just like in the examples in the slides. -->
+		<!-- <div class="container"> -->
+			<!-- use col-sm-2 as well as col-sm-8 in the exercises,
+			just like in the examples in the slides. -->
+<div class="container">
+	<form class="form-horizontal">
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label">name:</label>
+			<div class="col-sm-8">
+				<input class="form-control"type="text">
+			</div>
 		</div>
-	</body>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label">gender:<br><br><br></label>
+			<div class="radio col-sm-10">
+				<label><input type="radio" name="male">male</label>
+			</div>
+			<div class="radio col-sm-10">
+				<label><input type="radio" name="female">female</label>
+			</div>
+			<div class="radio col-sm-10">
+				<label><input type="radio" name="other" checked>other</label>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label">major:</label>
+			<div class="col-sm-8">
+				<select multiple class="form-control">
+				  <option>math</option>
+				  <option selected>computer science</option>
+				  <option>physics</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label">notes:</label>
+			<div class="col-sm-8">
+				<textarea class="form-control" rows="2"></textarea>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-8">
+				<button class="btn btn-primary">submit</button>
+			</div>
+		</div>
+	</form>
+</div>
+</body>
 </html>
