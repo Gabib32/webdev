@@ -1,22 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
 
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	</head>
-	<body>
-		<!-- this exercise looks like more work than it actually is, since you can copy and paste a majority of it. you might ask yourself in this regard why there is a gap between the navbar and the jumbotron. this is because the navbar is set to static and not to fixed. -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-		<p>vivamus felis odio, tristique posuere mollis ut, gravida et lorem. etiam a augue fermentum, auctor erat nec, porttitor magna. proin sit amet egestas purus. proin iaculis sed quam sit amet laoreet.</p>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-		<p>curabitur malesuada gravida lacus eget iaculis. duis diam magna, gravida ac posuere sit amet, sollicitudin non justo. praesent pretium tristique risus. donec feugiat, tortor ac semper laoreet, enim arcu tempor nisi, eu aliquam ex nisl elementum ex.</p>
+</head>
 
-		<p>integer posuere sed justo vel dignissim. pellentesque elementum aliquam aliquet. nullam quis consectetur libero, et cursus nunc. donec iaculis enim a velit iaculis dictum. aliquam erat volutpat.</p>
-	</body>
+<body>
+	<style type="text/css">
+		.jumbo {
+			padding=0px;
+		}
+	</style>
+
+	<nav class="navbar navbar-static-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
+				<a class="navbar-brand" href="#">hello world</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">home</a></li>
+					<li><a href="#about">about</a></li>
+					<li><a href="#contact">contact</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li> <a href="#">register</a></li>
+					<li> <a href="#">login</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1>brace yourself</h1>
+			<p>this exercise looks like more work than it actually is, since you can copy and paste a majority of it. you might ask yourself in this regard why there is a gap between the navbar and the jumbotron. this is because the navbar is set to static and not
+				to fixed.</p>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row">
+
+			<div class="col-xs-4 col-lg-4">
+				<h2>heading</h2>
+				<p>vivamus felis odio, tristique posuere mollis ut, gravida et lorem. etiam a augue fermentum, auctor erat nec, porttitor magna. proin sit amet egestas purus. proin iaculis sed quam sit amet laoreet.</p>
+				<p><a class="btn btn-default" href="#" role="button">more details &raquo;</a></p>
+			</div>
+
+			<div class="col-xs-4 col-lg-4">
+				<h2>heading</h2>
+				<p>curabitur malesuada gravida lacus eget iaculis. duis diam magna, gravida ac posuere sit amet, sollicitudin non justo. praesent pretium tristique risus. donec feugiat, tortor ac semper laoreet, enim arcu tempor nisi, eu aliquam ex nisl elementum ex.
+				</p>
+				<p><a class="btn btn-default" href="#" role="button">more details &raquo;</a></p>
+			</div>
+
+			<div class="col-xs-4 col-lg-4">
+				<h2>heading</h2>
+				<p>integer posuere sed justo vel dignissim. pellentesque elementum aliquam aliquet. nullam quis consectetur libero, et cursus nunc. donec iaculis enim a velit iaculis dictum. aliquam erat volutpat.</p>
+				<p><a class="btn btn-default" href="#" role="button">more details &raquo;</a></p>
+			</div>
+		</div>
+
+		<hr>
+		<footer>
+			<p>you have the &copy; of your work regardless of an explicit notice</p>
+		</footer>
+	</div>
+</body>
+
 </html>
