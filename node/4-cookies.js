@@ -2,6 +2,33 @@
 
 var http = require('http'); // do not change this line
 
+var server = http.createServer(function(req, res) {
+  console.log(req.headers.cookie);
+  console.log(req.url);
+
+  if (req.url && !req.headers.cookie) {
+    var value = decodeURIComponent(req.url)
+    res.writeHead(200, {
+      'Content-Type': 'text/plain',
+      'Set-Cookie': 'key=' + value
+    });
+    res.write('you must be new');
+    res.end();
+  } else if (req.url && req.headers.cookie) {
+    var value = decodeURIComponent(req.url)
+    console.log("VALUE", value);
+    res.writeHead(200, {
+      'Content-Type': 'text/plain',
+      'Set-Cookie': 'key=' + value
+    });
+    var c = req.headers.cookie.split('=')[1];
+    res.write('last time you visited \"' + c + '\"');
+    res.end();
+  }
+});
+
+server.listen(process.env.PORT || 8080);
+
 // http://localhost:8080/hello should return 'you must be new' in plain text and set an ident cookie
 
 // http://localhost:8080/test should return 'last time you visited "/hello"' in plain text

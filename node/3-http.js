@@ -3,7 +3,6 @@
 var http = require('http'); // do not change this line
 
 var server = http.createServer(function(req, res) {
-
   if (req.url === '/missing') {
     res.writeHead(404, {
       'Content-Type': 'text/plain'
