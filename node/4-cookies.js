@@ -3,9 +3,6 @@
 var http = require('http'); // do not change this line
 
 var server = http.createServer(function(req, res) {
-  console.log(req.headers.cookie);
-  console.log(req.url);
-
   if (req.url && !req.headers.cookie) {
     var value = decodeURIComponent(req.url)
     res.writeHead(200, {
@@ -16,7 +13,6 @@ var server = http.createServer(function(req, res) {
     res.end();
   } else if (req.url && req.headers.cookie) {
     var value = decodeURIComponent(req.url)
-    console.log("VALUE", value);
     res.writeHead(200, {
       'Content-Type': 'text/plain',
       'Set-Cookie': 'key=' + value

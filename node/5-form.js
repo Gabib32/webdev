@@ -2,24 +2,61 @@
 
 var http = require('http'); // do not change this line
 var querystring = require('querystring'); // do not change this line
+var post_message = [];
 
-// http://localhost:8080/form should return the form as shown below
-//   res.writeHead(200, {
-//   	'Content-Type': 'text/html'
-//   });
-//   
-//   res.write('<!DOCTYPE html>');
-//   res.write('<html>');
-//   	res.write('<body>');
-//   		res.write('<form action="/new" method="post">');
-//   			res.write('<input type="text" name="name">');
-//   			res.write('<input type="text" name="message">');
-//   			res.write('<input type="submit" value="submit">');
-//   		res.write('</form>');
-//   	res.write('</body>');
-//   res.write('</html>');
-//   
-//   res.end();
+var server = http.createServer(function(req, res) {
+  if (req.url === '/form') {
+    //http://localhost:8080/form should return the form as shown below
+    res.writeHead(200, {
+      'Content-Type': 'text/html'
+    });
+
+    res.write('<!DOCTYPE html>');
+    res.write('<html>');
+    res.write('<body>');
+    res.write('<form action="/new" method="post">');
+    res.write('<input type="text" name="name">');
+    res.write('<input type="text" name="message">');
+    res.write('<input type="submit" value="submit">');
+    res.write('</form>');
+    res.write('</body>');
+    res.write('</html>');
+
+    res.end();
+  } else if (req.url === '/new') {
+    if (req.method === 'POST') {
+      var body = '';
+      req.on('data', function(data) {
+        body += data;
+        console.log(body)
+      });;
+      req.on('end', function() {
+        var dict = (querystring.parse(body));
+        post_message.push(dict['name'] + ': ' + dict['message']);
+        console.log(post_message);
+      });
+    }
+    res.writeHead(200, {
+      'Content-Type': 'text/plain'
+    });
+    res.write('thank you for your message');
+    res.end();
+  } else if (req.url === '/list') {
+    res.writeHead(200, {
+      'Content-Type': 'text/plain',
+    });
+
+    res.write(post_message.join('\n'));
+    res.end();
+  } else {
+    res.writeHead(200, {
+      'Content-Type': 'text/plain',
+    });
+    res.write('');
+    res.end();
+  }
+});
+server.listen(process.env.PORT || 8080);
 
 // http://localhost:8080/new should retrieve the post data, save the name / message (in a global variable) and return 'thank you for your message' in plain text
 
