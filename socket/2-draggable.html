@@ -18,7 +18,7 @@
 
 				background-color:#3E8AB7;
 			}
-			
+
 			#second {
 				position:absolute;
 
@@ -27,7 +27,7 @@
 
 				background-color:#8667BC;
 			}
-			
+
 			#third {
 				position:absolute;
 
@@ -36,7 +36,7 @@
 
 				background-color:#8AB73E;
 			}
-			
+
 			#fourth {
 				position:absolute;
 
@@ -61,7 +61,46 @@
 		<div id="fourth" class="draggable"></div>
 
 		<script type="text/javascript">
+
 			var objectSocket = io.connect('http://localhost:8080/'); // do not change this line
+			var moveData = {};
+
+			var is_being_dragged = false;
+			var mousedown_position_x;
+			var mousedown_position_y;
+
+			// objectSocket.on('drag', function(objectData) {
+			// 	console.log(objectData);
+			// });
+			// objectSocket.on('drag', function() {
+			// moveData['strIdent'] = $(this);
+			// moveData['intLeft'] = mousedown_position_y;
+			// moveData['intTop'] = mousedown_position_x;
+			// io.emit('drag', moveData);
+			// });
+
+			$('.draggable')
+				.on('mousedown', function(event) {
+					is_being_dragged = true;
+					var outputX = $(this).position().left;
+					var outputY = $(this).position().top;
+					mousedown_position_x = (event.pageX - outputX);
+					mousedown_position_y = (event.pageY - outputY);
+				})
+				.on('mousemove', function(event) {
+					if (is_being_dragged) {
+
+						$('.draggable')
+							.css({
+								top: event.pageY - mousedown_position_y,
+								left: event.pageX - mousedown_position_x,
+								position:'absolute'
+							})
+					}
+				})
+				.on('mouseup', function() {
+					is_being_dragged = false;
+				})
 
 			// when dragging an element around, send a 'drag' event to the server containing the strIdent of the element and the new intLeft as well as the new intTop position
 			// for example, when dragging the first div to the right, the 'drag' event might contain: { 'strIdent':'first', 'intLeft':100, 'intTop':10 }
