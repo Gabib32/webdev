@@ -45,7 +45,6 @@ var server = http.createServer(function(req, res) {
     res.writeHead(200, {
       'Content-Type': 'text/plain',
     });
-
     res.write(post_message.join('\n'));
     res.end();
   } else {
