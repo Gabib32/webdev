@@ -1,51 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	</head>
-	<body>
-		<select id="choice" size="4">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<select id="choice" size="4">
 			<option>max</option>
 			<option>anna</option>
 			<option>tim</option>
 			<option>alex</option>
 		</select>
 
-		<br><br>
+	<br><br>
 
-		<table border="1">
-			<tr>
-				<td>first:</td>
-				<td><input id="first" type="text"></td>
-			</tr>
-			<tr>
-				<td>last:</td>
-				<td><input id="last" type="text"></td>
-			</tr>
-			<tr>
-				<td>gender:</td>
-				<td>
-					<input type="radio" name="gender" value="male">male
-					<br>
-					<input type="radio" name="gender" value="female">female
-					<br>
-					<input type="radio" name="gender" value="other">other
-				</td>
-			</tr>
-			<tr>
-				<td>random:</td>
-				<td><input id="random" type="text"></td>
-			</tr>
-		</table>
+	<table border="1">
+		<tr>
+			<td>first:</td>
+			<td><input id="first" type="text"></td>
+		</tr>
+		<tr>
+			<td>last:</td>
+			<td><input id="last" type="text"></td>
+		</tr>
+		<tr>
+			<td>gender:</td>
+			<td>
+				<input id="male" type="radio" name="gender" value="male">male
+				<br>
+				<input id="female" type="radio" name="gender" value="female">female
+				<br>
+				<input id="other" type="radio" name="gender" value="other">other
+			</td>
+		</tr>
+		<tr>
+			<td>random:</td>
+			<td><input id="random" type="text"></td>
+		</tr>
+	</table>
 
-		<script type="text/javascript">
-			// when somebody selects an option in the choice selection element, the script should make a get request to: http://mercury.cs.pdx.edu/exercise/ajax/lookup.json?strName=max
-			// the data that is being received by this query is in the json format and might look like: { 'strFirst':'max','strLast':'baum','strGender':'male','strRandom':'3BLJEkKk' }
-			// this received data should subsequently be used to set the first textbox, the last textbox, the gender radio button as well as the random textbox
-		</script>
-	</body>
+	<script type="text/javascript">
+		// when somebody selects an option in the choice selection element, the script should make a get request to: http://mercury.cs.pdx.edu/exercise/ajax/lookup.json?strName=max
+		// the data that is being received by this query is in the json format and might look like: { 'strFirst':'max','strLast':'baum','strGender':'male','strRandom':'3BLJEkKk' }
+		// this received data should subsequently be used to set the first textbox, the last textbox, the gender radio button as well as the random textbox
+
+		document.getElementById('choice').onchange = function() {
+			var choiceName = document.getElementById("choice").value;
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = function() {
+				if (request.readyState === 4) {
+					if (request.status === 200) {
+						var resText = JSON.parse(request.responseText);
+						console.log(resText);
+						document.getElementById("first").value = resText.strFirst;
+						document.getElementById("last").value = resText.strLast;
+						document.getElementById(resText.strGender).checked = true;
+						document.getElementById("random").value = resText.strRandom;
+
+
+						// var suggest = JSON.parse(request.responseText).strFiles;
+						// document.getElementById("output").innerHTML = suggest.join('\n');
+					}
+				}
+			};
+
+			request.open('GET', 'http://mercury.cs.pdx.edu/exercise/ajax/lookup.json?strName=' + choiceName, true);
+			request.send(null);
+		};
+
+	</script>
+</body>
+
 </html>

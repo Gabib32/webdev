@@ -31,8 +31,7 @@
 			};
 
 			strInput = document.getElementById('input').value;
-			var data = request.open('GET', 'http://mercury.cs.pdx.edu/exercise/ajax/suggest.json?strFile=' + strInput, true);
-			console.log(data);
+			request.open('GET', 'http://mercury.cs.pdx.edu/exercise/ajax/suggest.json?strFile=' + strInput, true);
 			request.send(null);
 		};
 
