@@ -1,16 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
 
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-	</head>
-	<body>
-		<!--
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+
+</head>
+
+<body>
+	<table border="1">
+		<tr>
+			<th>name</th>
+			<th>value</th>
+			<th>change</th>
+			<th>time</th>
+			<th>volume</th>
+		</tr>
+		{{#objectStocks}}
+		<tr>
+			<td>{{strName}}</td>
+			<td>
+				<script type="text/javascript">
+					document.write(({{dblValue}}).toFixed(2));
+				</script>
+			</td>
+			<td>
+				<script type="text/javascript">
+					if ({{dblChange}} >= 0) {
+						jQuery('script').last().parent().css({
+							'background-color': '#ADC4A2',
+						});
+					} else if ({{dblChange}} < 0) {
+						jQuery('script').last().parent().css({
+							'background-color': '#BC6772'
+						});
+					}
+					document.write(({{dblChange}}).toFixed(2));
+				</script>
+			</td>
+			<td>
+				<script type="text/javascript">
+					document.write(moment({{intTime}}).format('YYYY.MM.DD - HH:mm:ss:SSS'));
+				</script>
+			</td>
+			<td>
+				<script type="text/javascript">
+					if ({{intVolume}} <= 999999) {
+						document.write(({{intVolume}}/1000) + ' T');
+					} else if ({{intVolume}} > 999999 && {{intVolume}} <= 999999999) {
+						document.write(({{intVolume}}/1000000) + ' M');
+					} else if ({{intVolume}} > 999999999) {
+						document.write((({{intVolume}}/1000000000).toFixed(1)) + ' B');
+					}
+				</script>
+			</td>
+		</tr>
+		{{/objectStocks}}
+	</table>
+</body>
+
+</html>
+
+<!--
 			given a javascript object like:
 				{
 					'objectStocks': [
@@ -52,5 +109,3 @@
 					</tr>
 				</table>
 		-->
-	</body>
-</html>
